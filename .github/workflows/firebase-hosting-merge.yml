@@ -12,11 +12,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Specify the Node.js version
+          node-version: '18'
 
       - name: Install dependencies
         working-directory: ./public
@@ -29,31 +29,12 @@ jobs:
 
       - name: Build project
         working-directory: ./public
-        run: npm run build
-
-      - name: Upload build artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Angular-SPA
-          path: public/dist/jsswangular/browser  # Adjusted the path to match your project structure
-
-  download_and_deploy:
-    runs-on: ubuntu-latest
-    needs: build_and_deploy
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: Angular-SPA
-          path: public/dist/jsswangular/browser
+        run: npm run build -- --prod
 
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OTPT_777E0 }}
-          channelId: live
           projectId: otpt-777e0
+          channelId: live

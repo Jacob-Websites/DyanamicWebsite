@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site":"dyanamicwebsite",
-    "public": "dist/jsswangular",
+    "public": "public/dist/jsswangular",
     "ignore": [
       "firebase.json",
       "**/.*",

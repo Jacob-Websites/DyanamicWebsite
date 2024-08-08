@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Angular-SPA
-          path: ./public/dist  # Specify the build output directory
+          path: dist/jsswangular  # Ensure this matches your output directory
 
   download_and_deploy:
     runs-on: ubuntu-latest

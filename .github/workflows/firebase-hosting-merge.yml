@@ -27,8 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install dependencies
-        working-directory: ./public
         run: |
+          cd public
           if [ -f package-lock.json ]; then
             npm ci
           else
@@ -40,8 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:      
       - name: Build project
-        working-directory: ./public
-        run: npm run build
+        run: |
+          cd public
+          npm run build
 
   upload_artifacts:
     needs: build_project
@@ -51,22 +52,20 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Angular-SPA
-          path: dist/jsswangular
+          path: public/dist/jsswangular  # Adjusted the path to match your project structure
 
   download_and_deploy:
-    needs: upload_artifacts
+    needs: [upload_artifacts, checkout_Repository]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-  download_artifacts:
-    needs: download_and_deploy
-    runs-on: ubuntu-latest
-    steps:     
+
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: Angular-SPA
+
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

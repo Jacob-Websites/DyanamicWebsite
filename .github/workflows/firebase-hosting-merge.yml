@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # Specify the Node.js version
+          node-version: '18'
 
       - name: Install dependencies
         working-directory: ./public
@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Angular-SPA
-          path: dist/jsswangular  # Ensure this matches your output directory
+          path: ./public/dist/jsswangular  # Make sure this matches the output directory
 
   download_and_deploy:
     runs-on: ubuntu-latest

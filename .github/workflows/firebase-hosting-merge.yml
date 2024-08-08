@@ -7,17 +7,25 @@ on:
       - pipelines
 
 jobs:
-  build_and_deploy:
+  checkout_Repository:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+
+  setup_nodejs:
+    needs: checkout_Repository
+    runs-on: ubuntu-latest
+    steps:      
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '18'
 
+  install_packages:
+    needs: setup_nodejs
+    runs-on: ubuntu-latest
+    steps:
       - name: Install dependencies
         working-directory: ./public
         run: |
@@ -27,28 +35,38 @@ jobs:
             npm install
           fi
 
+  build_project:
+    needs: install_packages
+    runs-on: ubuntu-latest
+    steps:      
       - name: Build project
         working-directory: ./public
         run: npm run build
 
+  upload_artifacts:
+    needs: build_project
+    runs-on: ubuntu-latest
+    steps:       
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
           name: Angular-SPA
-          path: ./public/dist/jsswangular  # Make sure this matches the output directory
+          path: dist/jsswangular
 
   download_and_deploy:
+    needs: upload_artifacts
     runs-on: ubuntu-latest
-    needs: build_and_deploy
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+  download_artifacts:
+    needs: download_and_deploy
+    runs-on: ubuntu-latest
+    steps:     
       - name: Download build artifacts
         uses: actions/download-artifact@v3
         with:
           name: Angular-SPA
-
       - name: Deploy to Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:

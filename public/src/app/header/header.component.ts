@@ -11,11 +11,12 @@ export class HeaderComponent {
   constructor(private Auth:AuthService){}
 
   ngOnInit(){
-    this.Auth.getRoutes().subscribe((data:any)=>{
-      console.log(data)
-      this.RoutesData=data?.data?.result;
-      console.log(this.RoutesData)
-    })
+    this.Auth.getRoutes().subscribe((data: any) => {
+      console.log(data);
+      this.RoutesData = data?.data.sort((a: any, b: any) => a.displayOrder - b.displayOrder);
+      console.log(this.RoutesData);
+    });
+    
   }
 
 }

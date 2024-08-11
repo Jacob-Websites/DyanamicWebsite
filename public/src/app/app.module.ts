@@ -9,13 +9,27 @@ import { LoadingComponent } from './features/loading/loading.component';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './features/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AboutComponent } from './features/about/about.component';
+import { SocialeventsComponent } from './features/socialevents/socialevents.component';
+import { GalleryComponent } from './features/gallery/gallery.component';
+import { VideosComponent } from './features/videos/videos.component';
+import { UpcomingComponent } from './features/upcoming/upcoming.component';
+import { ContactComponent } from './features/contact/contact.component';
+import { DenoteComponent } from './features/denote/denote.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     LoadingComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    SocialeventsComponent,
+    GalleryComponent,
+    VideosComponent,
+    UpcomingComponent,
+    ContactComponent,
+    DenoteComponent
   ],
   imports: [
     BrowserModule,

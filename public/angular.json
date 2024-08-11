@@ -57,14 +57,12 @@
               "outputHashing": "all",
               "sourceMap": false,
               "optimization": true,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "buildOptimizer": true
             },
             "development": {
               "optimization": false,
-              "extractCss": false,
               "sourceMap": true,
               "namedChunks": true,
               "aot": false

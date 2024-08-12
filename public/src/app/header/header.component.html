@@ -5,11 +5,11 @@
                         <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left d-flex">
-                                    <ul class="text-center">     
-                                        <li>Phone: +91 12345</li>
-                                        <li>Email: test</li>
+                                    <ul *ngIf="headerData && headerData.length > 0" class="text-center">     
+                                        <li>Phone: +{{this.headerData[0].phone_number}}</li>
+                                        <li>Email: {{this.headerData[0].email}}</li>
                                     </ul>
-                                    <!-- <div class="header-social">    
+                                       <!-- <div class="header-social">    
                                          <ul>
                                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
                                             <li><a  href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
@@ -27,9 +27,9 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo">
-                                    <a href="index.html"><img src="assets/img/logo/1.png" width="200px" alt=""></a>
+                            <div class="col-xl-2 col-lg-2" *ngIf="headerData && headerData.length > 0" >
+                                <div class="logo" >
+                                    <a href="index.html"><img src="{{this.headerData[0].image}}" width="200px" alt=""></a>
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -56,3 +56,5 @@
                 </div>
             </div>
         </div>
+
+     

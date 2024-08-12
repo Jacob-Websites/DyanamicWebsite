@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "site":"jsswdyanamic",
+    "site":"jsswsite",
     "public": "public/dist/jsswangular/browser",
     "ignore": [
       "firebase.json",

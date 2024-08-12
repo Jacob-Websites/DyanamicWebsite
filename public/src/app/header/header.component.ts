@@ -8,14 +8,19 @@ import { AuthService } from '../Core/services/auth.service';
 })
 export class HeaderComponent {
   RoutesData: any;
+  headerData: any;
   constructor(private Auth:AuthService){}
-
   ngOnInit(){
-    this.Auth.getRoutes().subscribe((data: any) => {
-      console.log(data);
-      this.RoutesData = data?.data.sort((a: any, b: any) => a.displayOrder - b.displayOrder);
-      console.log(this.RoutesData);
-    });
+    const Organization=sessionStorage.getItem('OrgId')
+    if(Organization){
+      this.Auth.getRoutes(Organization).subscribe((data: any) => {
+        this.RoutesData = data?.data.sort((a: any, b: any) => a.displayOrder - b.displayOrder);
+      });
+      this.Auth.getOrganization(Organization).subscribe((data:any)=>{
+        this.headerData=data?.data
+      })
+    }
+   
     
   }
 

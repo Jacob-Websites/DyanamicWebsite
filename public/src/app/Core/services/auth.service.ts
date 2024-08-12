@@ -12,17 +12,25 @@ import { Router } from '@angular/router';
 export class AuthService {
     
   //private apiUrl = 'https://jssw-api.onrender.com';
-  private apiUrl = 'https://jssw-api.onrender.com'
+  private apiUrl = 'http://localhost:3000'
   updatedaata: any;
 
   constructor(private http: HttpClient,private router:Router) {}
 getFounder(){
   return this.http.get(`${this.apiUrl}/api/getFounders`)
 }
-getRoutes(){
-  return this.http.get(`${this.apiUrl}/api/GetRoutes`)
+getRoutes(id:string){
+  return this.http.get(`${this.apiUrl}/api/GetRoutes?id=${id}`)
 }
- 
+getSites(){
+  return this.http.get(`${this.apiUrl}/api/getSites`)
+}
+getOrganization(id:string){
+  return this.http.get(`${this.apiUrl}/api/organizations?id=${id}`)
+}
+getAbout(id:string){
+  return this.http.get(`${this.apiUrl}/api/GetAbout?id=${id}`)
+}
   
 }
 interface YouTubeResponse {

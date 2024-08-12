@@ -47,5 +47,5 @@ jobs:
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_OTPT_777E0 }}
-          projectId: otpt-777e0
+          projectId: test-1-cd7e8
           channelId: live

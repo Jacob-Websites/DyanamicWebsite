@@ -33,13 +33,13 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v3
         with:
-          name: build-artifact
+          name: Angular-SPA
           path: ./public/dist
 
       - name: Download build artifact
         uses: actions/download-artifact@v3
         with:
-          name: build-artifact
+          name: Angular-SPA
           path: jsswangular/browser
 
       - name: Deploy to Firebase Hosting

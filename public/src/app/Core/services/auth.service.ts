@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class AuthService {
     
   //private apiUrl = 'https://jssw-api.onrender.com';
-  private apiUrl = 'http://localhost:3000'
+  private apiUrl = 'https://jssw-api.onrender.com'
   updatedaata: any;
 
   constructor(private http: HttpClient,private router:Router) {}

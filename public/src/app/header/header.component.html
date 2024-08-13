@@ -5,7 +5,7 @@
                         <div class="col-xl-12">
                             <div class="row d-flex justify-content-between align-items-center">
                                 <div class="header-info-left d-flex">
-                                    <ul *ngIf="headerData && headerData.length > 0" class="text-center">     
+                                    <ul  class="text-center">     
                                         <li>Phone: +{{this.headerData[0].phone_number}}</li>
                                         <li>Email: {{this.headerData[0].email}}</li>
                                     </ul>
@@ -27,7 +27,7 @@
                     <div class="container-fluid">
                         <div class="row align-items-center">
                             <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2" *ngIf="headerData && headerData.length > 0" >
+                            <div class="col-xl-2 col-lg-2" >
                                 <div class="logo" >
                                     <a href="index.html"><img src="{{this.headerData[0].image}}" width="200px" alt=""></a>
                                 </div>

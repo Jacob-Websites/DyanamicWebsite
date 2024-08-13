@@ -38,7 +38,7 @@ import { DenoteComponent } from './features/denote/denote.component';
     AppRoutingModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
 
   ],
   bootstrap: [AppComponent]

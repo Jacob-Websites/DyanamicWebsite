@@ -15,29 +15,20 @@ export class HomeComponent implements OnInit {
   constructor(private auth: AuthService, private http: HttpClient,private location: Location) {}
 
   ngOnInit() {
-    // this.auth.getFounder().subscribe((data) => {
-    //   console.log(data);
-    // });
+   
     this.auth.getSites().subscribe((data:any)=>{
       this.RoutesData=data?.data
-      this.loadData()
+      console.log(this.RoutesData)
       this.loadAbout()
     })
   }
-  loadData(){
-    
-    const findAuthData=this.RoutesData?.find((x: { link: string; })=>x.link===window.location.href)
-    sessionStorage.setItem('OrgId',findAuthData.OrganizationId)
-  }
+  
   loadAbout(){
-    const Organizations=sessionStorage.getItem('OrgId');
-    if(Organizations){
-      this.auth.getAbout(Organizations).subscribe((data:any)=>{
-        console.log(data)
+    const findAuthData=this.RoutesData?.find((x: { link: string; })=>x.link===window.location.href)
+      this.auth.getAbout(findAuthData.OrganizationId).subscribe((data:any)=>{
         this.aboutData=data?.data?.result
-        console.log(this.aboutData)
       })
-    }
+    
   }
 
 }

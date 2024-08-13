@@ -1,60 +1,55 @@
- <div class="header-area">
-            <div class="main-header ">
-                <div class="header-top d-none d-lg-block">
-                    <div class="container-fluid">
-                        <div class="col-xl-12">
-                            <div class="row d-flex justify-content-between align-items-center">
-                                <div class="header-info-left d-flex">
-                                    <ul  class="text-center">     
-                                        <li>Phone: +{{this.headerData[0].phone_number}}</li>
-                                        <li>Email: {{this.headerData[0].email}}</li>
-                                    </ul>
-                                       <!-- <div class="header-social">    
-                                         <ul>
-                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                            <li><a  href="https://www.facebook.com/sai4ull"><i class="fab fa-facebook-f"></i></a></li>
-                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                            <li> <a href="#"><i class="fab fa-google-plus-g"></i></a></li>
-                                        </ul> 
-                                    </div> -->
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-bottom  header-sticky">
-                    <div class="container-fluid">
-                        <div class="row align-items-center">
-                            <!-- Logo -->
-                            <div class="col-xl-2 col-lg-2" >
-                                <div class="logo" >
-                                    <a href="index.html"><img src="{{this.headerData[0].image}}" width="200px" alt=""></a>
-                                </div>
-                            </div>
-                            <div class="col-xl-10 col-lg-10">
-                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
-                                    <!-- Main-menu -->
-                                    <div class="main-menu d-none d-lg-block">
-                                        <nav>
-                                            <ul id="navigation">                                                                                          
-                                                <li *ngFor="let x of RoutesData">
-                                                    <a [href]="x.link">{{ x.name }}</a>
-                                                  </li>
-                                            </ul>
-                                        </nav>
-                                    </div>
-                                   
-                                </div>
-                            </div> 
-                            <!-- Mobile Menu -->
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="header-area">
+    <div class="main-header">
+      <div class="header-top d-none d-lg-block">
+        <div class="container-fluid">
+          <div class="col-xl-12">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="header-info-left d-flex">
+                <ul class="text-center">
+                  <!-- Use ngIf to check if headerData is available -->
+                  <li >Phone: +{{ headerData.phone_number }}</li>
+                  <li >Email: {{ headerData.email }}</li>
+                  <!-- Fallback content if headerData is not available -->
+                </ul>
+              </div>
             </div>
+          </div>
         </div>
-
-     
+      </div>
+      <div class="header-bottom header-sticky">
+        <div class="container-fluid">
+          <div class="row align-items-center">
+            <!-- Logo -->
+            <div class="col-xl-2 col-lg-2">
+              <div class="logo">
+                <a href="index.html">
+                  <!-- Use ngIf to check if image is available -->
+                  <img src="{{headerData.image}}" width="200px" alt="Logo">
+                </a>
+              </div>
+            </div>
+            <div class="col-xl-10 col-lg-10">
+              <div class="menu-wrapper d-flex align-items-center justify-content-end">
+                <!-- Main-menu -->
+                <div class="main-menu d-none d-lg-block">
+                  <nav>
+                    <ul id="navigation">
+                      <!-- Use ngFor with safe data check -->
+                      <li *ngFor="let x of RoutesData">
+                        <a [href]="x.link">{{ x.name }}</a>
+                      </li>
+                    </ul>
+                  </nav>
+                </div>
+              </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div class="col-12">
+              <div class="mobile_menu d-block d-lg-none"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
